@@ -1,0 +1,42 @@
+###################################################################################################
+# Properties Definition of Application
+###################################################################################################
+
+## =================================================================================================
+## Application config
+## =================================================================================================
+
+
+## Server HTTP port.
+server.port: ${application.port}
+server.servlet.session.timeout : 40m
+
+## Running active profile
+application.profile : "@active.profile@"
+
+## Running port
+application.port : "@cloud.config.build.port@"
+
+
+## =================================================================================================
+## Spring Boot config
+## =================================================================================================
+
+## Application name.
+spring.application.name: cloud-config
+
+## Comma-separated list of active profiles.
+spring.profiles.active: native, ${application.profile}
+
+## Locations to search for configuration files ${DISCOVERY_URI}
+spring.cloud.config.server.native.search-locations: classpath:/shared/common/, classpath:/shared/@active.profile@/
+
+
+eureka:
+  client:
+    registry-fetch-interval-seconds: 2
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 5

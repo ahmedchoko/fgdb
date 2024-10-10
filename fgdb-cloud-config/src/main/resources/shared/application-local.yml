@@ -1,0 +1,12 @@
+###################################################################################################
+# Properties Definition for local profile 
+###################################################################################################
+
+## Override Running port
+application.port: 8888
+
+## Eureka sever param
+eureka.client.service-url.defaultZone: http://user:password@localhost:8761/eureka
+
+## Enabel Eureka client
+eureka.client.enabled: false

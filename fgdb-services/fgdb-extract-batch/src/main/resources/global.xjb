@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:annox="http://annox.dev.java.net"
+               xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               version="2.1">
+    <jaxb:bindings schemaLocation="G2_V1.0.xsd">
+        <!-- Example: Adding javax Validation annotations -->
+        <jaxb:bindings node="//xs:attribute[@name='vuc_id']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull"/>
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">30</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+        <!-- Example: Adding javax Validation annotations -->
+        <jaxb:bindings node="//xs:attribute[@name='depositor_id']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull"/>
+            </annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='depositors']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull"/>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='cin_num']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull"/>
+                <annox:annotate annox:class="javax.validation.constraints.Digits">
+                    <annox:annotate annox:field="integer">8</annox:annotate>
+                    <annox:annotate annox:field="fraction">0</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+
+        <jaxb:bindings node="//xs:element[@name='passport_num']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">15</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='residence_certificate']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">15</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='depositor_identification_pp']//xs:element[@name='birth_day']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Pattern">
+                    <annox:annotate annox:field="regexp">\d{2}[/]\d{2}[/]\d{4}</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='depositor_identification_pm']//xs:element[@name='birth_day']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Pattern">
+                    <annox:annotate annox:field="regexp">\d{2}[/]\d{2}[/]\d{4}</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='first_name']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull"/>
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">30</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='last_name']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull"/>
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">50</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='depositor_identification_pp']//xs:element[@name='place_birth']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">20</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='depositor_identification_pm']//xs:element[@name='place_birth']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">20</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='depositor_identification_pp']//xs:element[@name='nationality']" >
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Digits">
+                    <annox:annotate annox:field="integer">3</annox:annotate>
+                    <annox:annotate annox:field="fraction">0</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='depositor_identification_pm']//xs:element[@name='nationality']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Digits">
+                    <annox:annotate annox:field="integer">3</annox:annotate>
+                    <annox:annotate annox:field="fraction">0</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='tutor']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Pattern">
+                    <annox:annotate annox:field="regexp">[1-3]</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='address']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">500</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='country']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">3</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='phone_number_1']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Pattern">
+                    <annox:annotate annox:field="regexp">[0-9]{1,20}</annox:annotate>
+                </annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">20</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='phone_number_2']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Pattern">
+                    <annox:annotate annox:field="regexp">[0-9]{1,20}</annox:annotate>
+                </annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">20</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='email']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Pattern">
+                    <annox:annotate annox:field="regexp">[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='account_number']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">20</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='commercial_name']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">100</annox:annotate>
+                </annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Pattern">
+                    <annox:annotate annox:field="regexp">[a-zA-Z]</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='account_title']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">50</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='account_nature']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Pattern">
+                    <annox:annotate annox:field="regexp">[1-2]</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='debit_account_balance']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Digits">
+                    <annox:annotate annox:field="integer">50</annox:annotate>
+                    <annox:annotate annox:field="fraction">20</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='account_balance']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Digits">
+                    <annox:annotate annox:field="integer">50</annox:annotate>
+                    <annox:annotate annox:field="fraction">20</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='credit_account_balance']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Digits">
+                    <annox:annotate annox:field="integer">50</annox:annotate>
+                    <annox:annotate annox:field="fraction">20</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='total_overdue_unpaid_debts']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Digits">
+                    <annox:annotate annox:field="integer">50</annox:annotate>
+                    <annox:annotate annox:field="fraction">20</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='total_deferred_debits']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Digits">
+                    <annox:annotate annox:field="integer">50</annox:annotate>
+                    <annox:annotate annox:field="fraction">20</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='total_agios']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Digits">
+                    <annox:annotate annox:field="integer">50</annox:annotate>
+                    <annox:annotate annox:field="fraction">20</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='total_guarantee_unreleased']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Digits">
+                    <annox:annotate annox:field="integer">50</annox:annotate>
+                    <annox:annotate annox:field="fraction">20</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+
+        <jaxb:bindings node="//xs:element[@name='total_deductions']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Digits">
+                    <annox:annotate annox:field="integer">50</annox:annotate>
+                    <annox:annotate annox:field="fraction">20</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='total_interest']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Digits">
+                    <annox:annotate annox:field="integer">50</annox:annotate>
+                    <annox:annotate annox:field="fraction">20</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='depositor_identification_pp']//xs:element[@name='person_type']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='depositor_identification_pm']//xs:element[@name='person_type']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+            </annox:annotate>
+        </jaxb:bindings>
+        <!-- For compensableAggregateBalance -->
+        <jaxb:bindings node="//xs:element[@name='compensable_aggregate_balance']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Digits">
+                    <annox:annotate annox:field="integer">12</annox:annotate>
+                    <annox:annotate annox:field="fraction">2</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='holders_count']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Digits">
+                    <annox:annotate annox:field="integer">2</annox:annotate>
+                    <annox:annotate annox:field="fraction">2</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:attribute[@name='accounts_count']">a
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Digits">
+                    <annox:annotate annox:field="integer">2</annox:annotate>
+                    <annox:annotate annox:field="fraction">2</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+        <!-- For vucIdCoAccountHolders -->
+        <jaxb:bindings node="//xs:element[@name='vuc_id_co_account_holders']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">30</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <!-- For currency -->
+        <jaxb:bindings node="//xs:element[@name='currency']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">20</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <!-- For bankCard enum -->
+        <jaxb:bindings node="//xs:element[@name='bank_card']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Pattern">
+                    <annox:annotate annox:field="regexp">[0-1]</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <!-- For bankCardNumber -->
+        <jaxb:bindings node="//xs:element[@name='bank_card_number']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">30</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <!-- For bankCardValidity -->
+        <jaxb:bindings node="//xs:element[@name='bank_card_validity']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">5</annox:annotate>
+                </annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Pattern">
+                    <annox:annotate annox:field="regexp">\d{2}[/]\d{2}</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <!-- For legalForm -->
+        <jaxb:bindings node="//xs:element[@name='legal_form']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">20</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <!-- For rne -->
+        <jaxb:bindings node="//xs:element[@name='rne']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Size">
+                    <annox:annotate annox:field="max">8</annox:annotate>
+                </annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.Pattern">
+                    <annox:annotate annox:field="regexp">^\d{7}[A-Z]{1}$</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+
+        <!-- For otherIdentifierType -->
+        <jaxb:bindings node="//xs:element[@name='other_identifier_type']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Pattern">
+                    <annox:annotate annox:field="regexp">[1-5]</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+        <!-- For otherIdentifierType -->
+        <jaxb:bindings node="//xs:element[@name='cin_issue_date']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.validation.constraints.NotNull" />
+                <annox:annotate annox:class="javax.validation.constraints.Pattern">
+                    <annox:annotate annox:field="regexp">\d{2}[/]\d{2}[/]\d{4}</annox:annotate>
+                </annox:annotate>
+            </annox:annotate>
+        </jaxb:bindings>
+    </jaxb:bindings>
+</jaxb:bindings>

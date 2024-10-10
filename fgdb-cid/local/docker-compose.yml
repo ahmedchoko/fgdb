@@ -1,0 +1,117 @@
+version: '3.8'  # or any version compatible with your Docker Compose
+
+services:
+
+  ## ##############################################################################################
+  ## CLOUD-CONFIG IMAGES
+  ## ##############################################################################################
+
+  fgbd-cloud-config:
+    image: fgbd/cloud-config
+    restart: always
+    ports:
+      - 8888:8888
+    networks:
+      - fgbd-dev
+    env_file:
+      - ./param/cloud-config.env
+      - ./param/cloud-discovery.env
+    volumes:
+      - /home/projects/fgbd/dev/log:/var/log/fgbd/dev
+      - /home/projects/fgbd/dev/volume:/tmp
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  ## ##############################################################################################
+  ## CLOUD-DISCOVERY IMAGES
+  ## ##############################################################################################
+
+  fgbd-cloud-discovery:
+    image: fgbd/cloud-discovery
+    restart: always
+    ports:
+      - 8761:8761
+    networks:
+      - fgbd-dev
+    env_file:
+      - ./param/cloud-config.env
+      - ./param/cloud-discovery.env
+    depends_on:
+      - fgbd-cloud-config
+    volumes:
+      - /home/projects/fgbd/dev/log:/var/log/fgbd/dev
+      - /home/projects/fgbd/dev/volume:/tmp
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  fgbd-cloud-gateway:
+    image: fgbd/cloud-gateway
+    restart: always
+    ports:
+      - 8085:8085
+    networks:
+      - fgbd-dev
+    env_file:
+      - ./param/cloud-config.env
+      - ./param/cloud-discovery.env
+      - ./param/cloud-gateway.env
+      - ./param/extract-batch.env
+    depends_on:
+      - fgbd-cloud-discovery
+    volumes:
+      - /home/projects/fgbd/dev/log:/var/log/fgbd/dev
+      - /home/projects/fgbd/dev/volume:/tmp
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  fgbd-extract-batch-1:
+    image: fgbd/extract-batch
+    restart: always
+    ports:
+      - 8086:8086
+    networks:
+      - fgbd-dev
+    env_file:
+      - ./param/cloud-config.env
+      - ./param/cloud-discovery.env
+      - ./param/cloud-gateway.env
+      - ./param/extract-batch.env
+    depends_on:
+      - fgbd-cloud-discovery
+    volumes:
+      - /home/projects/fgbd/dev/log:/var/log/fgbd/dev
+      - /home/projects/fgbd/dev/volume:/tmp
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+  fgbd-extract-batch-2:
+    image: fgbd/extract-batch
+    restart: always
+    ports:
+      - 8087:8086
+    networks:
+      - fgbd-dev
+    env_file:
+      - ./param/cloud-config.env
+      - ./param/cloud-discovery.env
+      - ./param/cloud-gateway.env
+      - ./param/extract-batch.env
+    depends_on:
+      - fgbd-cloud-discovery
+    volumes:
+      - /home/projects/fgbd/dev/log:/var/log/fgbd/dev
+      - /home/projects/fgbd/dev/volume:/tmp
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+networks:
+  fgbd-dev:

@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<xs:schema attributeFormDefault="unqualified"
+           elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="vuc">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="depositors">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" minOccurs="1"
+                                        name="depositor">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="depositor_identification_pp">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="person_type" minOccurs="0" type="person_type" />
+
+                                                    <xs:element name="cin_num"  minOccurs="0"  nillable="false" type="cinNum" />
+                                                    <xs:element name="cin_issue_date"  minOccurs="0" type="dateValidation"/>
+                                                    <xs:element name="passport_num" type="passportNum" minOccurs="0" />
+                                                    <xs:element name="passport_validaty_date" minOccurs="0" type="dateValidation" />
+
+                                                    <xs:element name="residence_certificate" type="residenceCertificate" minOccurs="0" />
+                                                    <xs:element name="residence_certificate_date_residency" type="dateValidation" minOccurs="0" />
+
+
+                                                    <xs:element name="first_name" maxOccurs="1" minOccurs="1" type="name"/>
+                                                    <xs:element name="last_name" maxOccurs="1" minOccurs="1" type="name" />
+                                                    <xs:element name="birth_day" minOccurs="0" type="dateValidation" />
+                                                    <xs:element name="place_birth"  minOccurs="0" type="birthPlace"/>
+                                                    <xs:element name="nationality" maxOccurs="1"  minOccurs="0" type="nationality" />
+                                                    <xs:element name="tutor" maxOccurs="1" minOccurs="0" type="tutor" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="depositor_identification_pm">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="person_type" type="person_type" />
+                                                    <xs:element name="legal_form" maxOccurs="1" minOccurs="0" type="legalForm" />
+                                                    <xs:element name="company_name" maxOccurs="1" minOccurs="0" type="name"/>
+                                                    <xs:element name="rne" maxOccurs="1" minOccurs="0"  type="rne" />
+                                                    <xs:element name="other_identifier_type" type="otherIdentifierType" maxOccurs="1" minOccurs="0" />
+                                                    <xs:element name="other_identifier_num"
+                                                                maxOccurs="1" minOccurs="0" />
+                                                    <xs:element name="legal_representative_firstname"
+                                                                maxOccurs="1" minOccurs="0" type="firstName" />
+                                                    <xs:element name="legal_representative_lastname"
+                                                                maxOccurs="1" minOccurs="0" type="name"/>
+                                                    <xs:element name="birth_day" maxOccurs="1"
+                                                                minOccurs="0" type="dateValidation" />
+                                                    <xs:element name="place_birth" type="birthPlace"
+                                                                minOccurs="0" />
+                                                    <xs:element name="nationality" maxOccurs="1"
+                                                                minOccurs="0" type="nationality" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="contact_details">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="address" maxOccurs="1" minOccurs="0" type="address" />
+                                                    <xs:element name="country"  minOccurs="0" type="country" />
+                                                    <xs:element name="phone_number_1"  minOccurs="0" type="phoneNumber" />
+                                                    <xs:element name="phone_number_2"  minOccurs="0" type="phoneNumber" />
+                                                    <xs:element name="email" minOccurs="0" type="email"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="accounts_identification">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element maxOccurs="99" minOccurs="1" name="account">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="account_number" minOccurs="1" type="accountNumber" />
+                                                                <xs:element name="commercial_name"  minOccurs="1" type="commercialName"/>
+                                                                <xs:element name="account_title"  minOccurs="1" type="accountTitle"/>
+                                                                <xs:element name="account_nature"  minOccurs="1" type="accountNature" />
+                                                                <xs:element name="holders_count" minOccurs="0" type="accountsCount" />
+                                                                <xs:element name="account_balance"  type="decimalValue" minOccurs="1" />
+                                                                <xs:element name="compensable_aggregate_balance" type="compensableAggregateBalance" minOccurs="1" />
+                                                                <xs:element name="vuc_id_co_account_holders" type="vucIdCoAccountHolders"  minOccurs="1" />
+                                                                <xs:element name="currency" type="currency"  minOccurs="1" />
+                                                                <xs:element name="account_business_name"  minOccurs="1" />
+                                                                <xs:element name="bank_card" type="bankCard"  minOccurs="1" />
+                                                                <xs:element name="bank_card_number" type="bankCardNumber" minOccurs="0" />
+                                                                <xs:element name="bank_card_validity" type="bankCardValidity" minOccurs="0" />
+                                                                <xs:element name="account_status" maxOccurs="1"
+                                                                            minOccurs="0" />
+                                                                <xs:element name="group_2_account_situation"
+                                                                            maxOccurs="1" minOccurs="0" />
+                                                                <xs:element name="group_2_account_reason"
+                                                                            maxOccurs="1" minOccurs="0" />
+                                                                <xs:element name="debit_account_balance"
+                                                                             minOccurs="1" type="decimalValue" />
+                                                                <xs:element name="credit_account_balance"
+                                                                             minOccurs="1" type="decimalValue"/>
+                                                                <xs:element name="total_overdue_unpaid_debts"
+                                                                             minOccurs="1" type="decimalValue" />
+                                                                <xs:element name="total_deferred_debits"
+                                                                             minOccurs="1" type="decimalValue" />
+                                                                <xs:element name="total_agios"
+                                                                             minOccurs="1" type="decimalValue"/>
+                                                                <xs:element name="total_guarantee_unreleased"
+                                                                             minOccurs="1" type="decimalValue" />
+                                                                <xs:element name="total_interest"
+                                                                            minOccurs="1" type="decimalValue" />
+                                                                <xs:element name="total_deductions"
+                                                                             minOccurs="1" type="decimalValue" />
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                                <xs:attribute name="accounts_count" type="accountsCount" use="required" />
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+
+
+
+                                    <xs:attribute name="depositor_id" type="xs:string" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="vuc_id" type="xs:string" use="required" />
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="person_type" >
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="PP" />
+        <xs:enumeration value="PM" />
+        <xs:enumeration value="PF" />
+    </xs:restriction>
+</xs:simpleType>
+
+    <xs:simpleType name="cinNum">
+        <xs:restriction base="xs:integer">
+            <xs:totalDigits value="8"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="passportNum">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="residenceCertificate">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="dateValidation">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{2}[/]\d{2}[/]\d{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="name">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="firstName">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="birthPlace">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="nationality">
+        <xs:restriction base="xs:integer">
+            <xs:totalDigits value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tutor" >
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[1-3]"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="address">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="500"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="country">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="phoneNumber">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{1,20}"/>
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="email">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="accountsCount">
+        <xs:restriction base="xs:integer">
+            <xs:totalDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="accountNumber">
+        <xs:restriction base="xs:integer">
+            <xs:totalDigits value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="commercialName">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z]"/>
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="accountTitle">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="accountNature" >
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[1-2]"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="decimalValue">
+        <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="50"/>
+            <xs:fractionDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="compensableAggregateBalance">
+        <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="12"/>
+            <xs:fractionDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="vucIdCoAccountHolders">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="currency">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="bankCard" >
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-1]" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="bankCardNumber">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="bankCardValidity">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="5"/>
+            <xs:pattern value="\d{2}[/]\d{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="legalForm">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="rne">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="8"/>
+            <xs:pattern value="^\d{7}[A-Z]{1}$"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="otherIdentifierType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[1-5]" />
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

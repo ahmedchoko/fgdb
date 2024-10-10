@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.1</version> <!-- Change this to a compatible version, such as 3.2.x -->
+        <relativePath/>
+    </parent>
+
+    <groupId>com.wevioo</groupId>
+    <artifactId>fgdb</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <build.sourceEncoding>UTF-8</build.sourceEncoding>
+        <java.version>17</java.version>
+        <spring-cloud-dependencies.version>2023.0.2</spring-cloud-dependencies.version>
+
+
+
+        <cloud.config.build.finalName>fgbd-cloud-config</cloud.config.build.finalName>
+        <cloud.config.build.port>8888</cloud.config.build.port>
+
+        <cloud.discovery.build.finalName>fgbd-cloud-discovery</cloud.discovery.build.finalName>
+        <cloud.discovery.build.port>8761</cloud.discovery.build.port>
+
+        <cloud.gateway.build.finalName>fgbd-cloud-gateway</cloud.gateway.build.finalName>
+        <cloud.gateway.build.port>8080</cloud.gateway.build.port>
+
+
+
+        <extract.batch.build.finalName>fgbd-extract-batch</extract.batch.build.finalName>
+        <extract.batch.build.port>8086</extract.batch.build.port>
+
+
+        <discovery.docker.image.name>fgbd/cloud-discovery</discovery.docker.image.name>
+        <config.docker.image.name>fgbd/cloud-config</config.docker.image.name>
+        <gateway.docker.image.name>fgbd/cloud-gateway</gateway.docker.image.name>
+        <extract.batch.docker.image.name>fgbd/extract-batch</extract.batch.docker.image.name>
+
+        <docker.build.directory>${project.build.directory}/dockerbuild</docker.build.directory>
+        <docker.file.dir>src/main/resources/docker</docker.file.dir>
+        <docker.file.name>Dockerfile</docker.file.name>
+
+        <skipTests>true</skipTests>
+        <modelmapper.version>2.3.5</modelmapper.version>
+        <!-- <dbunit.version>2.5.0</dbunit.version> -->
+        <dbunit.version>2.6.0</dbunit.version>
+
+        <!-- <spring-test-dbunit.version>1.2.1</spring-test-dbunit.version> -->
+        <spring-test-dbunit.version>1.3.0</spring-test-dbunit.version>
+    </properties>
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <skipTests>${skipTests}</skipTests>
+                    </configuration>
+                </plugin>
+            </plugins>
+
+            <resources>
+                <resource>
+                    <directory>src/main/resources</directory>
+                    <filtering>true</filtering>
+                </resource>
+            </resources>
+        </build>
+        <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>2.17.0</version>
+            <type>pom</type>
+        </dependency>
+
+        <!-- lombok framework -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Dependency for Model Mapper -->
+        <dependency>
+            <groupId>org.modelmapper.extensions</groupId>
+            <artifactId>modelmapper-spring</artifactId>
+            <version>${modelmapper.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.springtestdbunit</groupId>
+            <artifactId>spring-test-dbunit</artifactId>
+            <version>${spring-test-dbunit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>${dbunit.version}</version>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.logging.log4j</groupId>
+                        <artifactId>log4j-api</artifactId>
+                    </exclusion>
+                </exclusions>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+<profiles>
+    <profile>
+    <id>local</id>
+    <properties>
+        <active.profile>local</active.profile>
+    </properties>
+    <activation>
+        <activeByDefault>true</activeByDefault>
+    </activation>
+</profile>
+    <profile>
+        <id>docker-local</id>
+        <properties>
+            <docker.host>tcp://</docker.host>
+        </properties>
+    </profile>
+</profiles>
+
+
+
+    <modules>
+        <module>fgdb-cid</module>
+        <module>fgdb-cloud-config</module>
+        <module>fgdb-cloud-discovery</module>
+        <module>fgdb-cloud-gateway</module>
+        <module>fgdb-server-auth</module>
+        <module>fgdb-services</module>
+    </modules>
+</project>

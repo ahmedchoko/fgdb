@@ -1,0 +1,57 @@
+###################################################################################################
+# Commun Properties Definition
+###################################################################################################
+
+## =================================================================================================
+## Spring Boot configuration
+## =================================================================================================
+
+## Server HTTP port.
+server.port: ${application.port}
+server.servlet.session.timeout: 40m
+
+## Eureka server param
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    registry-fetch-interval-seconds: 100
+    service-url:
+      defaultZone: http://knh:07454640YACINE.@localhost:8761/eureka
+    # Retry configuration to wait for Eureka server to be available
+    initial-instance-info-replication-interval-seconds: 10
+    instance-info-replication-interval-seconds: 10
+  instance:
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 5
+
+## Enable Spring Cloud Config Server Discovery and retry mechanism
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: false
+        service-id: eureka-server
+      retry:
+        initial-interval: 1000          # Initial retry interval in milliseconds
+        max-attempts: 6                 # Maximum retry attempts
+        max-interval: 10000             # Maximum retry interval in milliseconds
+        multiplier: 1.1
+        # Multiplier for each retry interval
+
+## =================================================================================================
+## RabbitMQ Server param (Commented out)
+## =================================================================================================
+# spring.rabbitmq:
+#   host: ${RABBITMQ_URI:192.168.26.77}
+#   port: ${RABBITMQ_PORT:5672}
+#   username: ${RABBITMQ_USERNAME:admin}
+#   password: ${RABBITMQ_PASSWORD:admin}
+
+## =================================================================================================
+## logging configuration
+## =================================================================================================
+
+## =================================================================================================
+## trace configuration
+## =================================================================================================

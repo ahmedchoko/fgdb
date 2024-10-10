@@ -1,0 +1,22 @@
+###################################################################################################
+# Properties Definition of FgdbDiscoveryApplication
+###################################################################################################
+
+## =================================================================================================
+## Spring Boot config
+## =================================================================================================
+
+## FgdbDiscoveryApplication name.
+spring.application.name: cloud-discovery
+
+## Running active profile
+spring.profiles.active: "@active.profile@"
+
+## Cloud config server param
+spring.cloud.config:
+  name: ${spring.application.name}
+  uri: ${CONFIG_URI:http://localhost:8888}
+  username: ${CONFIG_USERNAME:configUser}
+  password: ${CONFIG_PASSWORD:configPassword}
+  label: ${spring.profiles.active}
+  fail-fast: true
